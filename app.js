@@ -128,11 +128,32 @@ function removeDuplicates(str){
     }
 }
 
+function removeDuplicates(str){
+  var duplicates=0;
+  var total;
+  var uniques=[];
+   str.replace(/[^a-zA-Z ]/g, "").toLowerCase().split('').sort().forEach(function(value, i, arr){
+        if (arr.indexOf(value)!==arr.lastIndexOf(value)){
+                   duplicates++;
+                   removedChar.splice(i, 1);
+        }else{
+          uniques.push(value)
+    
+           total=arr.length-duplicates;
+        }
+   })
+
+   return {
+     duplicate:total,
+     uniques: uniques.join('')
+   }
+
+}
 
 
 //Question 5
 function isIsogram(str){
-    return str.split('').every(function(value, i, arr){
+    return str.split('').every(function(value){
          return arr.indexOf(value)===arr.lastIndexOf(value);
     })
 }
@@ -176,15 +197,10 @@ function power( value1, value2){
 
 //Question 8
 function longest(str){
-   str=str.split(" ");
-   var long;
-   long=str[0];
-  str.forEach(function(value, i){
-    if (i>0){
-      if (long.length < value.length){
-          long=value;
-        }
-    }
-   });
-  return long;
+  return str.split(' ').reduce(function(acc,value){
+         if (value.length>acc.length){
+           acc=value;
+         }
+         return acc;
+  },'');
 }
