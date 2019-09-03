@@ -107,44 +107,20 @@ function readlines(str){
 
 //Question 4
 function removeDuplicates(str){
-  var duplicate=0;
-  var str=str.replace(/[^a-zA-Z ]/g, "");
-       var removedChar= str.split("");
-       removedChar.sort(function(a,b){return a-b});               
-  for (var i=1; i<removedChar.length-1; i++){
-      for( var j=0; j<removedChar.length; j++){
-        if (i!=j){
-            if (removedChar[i]===removedChar[j]){
-               duplicate++;
-               removedChar.splice(j, 1);  
-              
-            }
-         }
-      }
-  }
-    return{
-      uniques:removedChar.join(''),
-      duplicates: duplicate
-    }
-}
-
-function removeDuplicates(str){
   var duplicates=0;
-  var total;
   var uniques=[];
    str.replace(/[^a-zA-Z ]/g, "").toLowerCase().split('').sort().forEach(function(value, i, arr){
         if (arr.indexOf(value)!==arr.lastIndexOf(value)){
                    duplicates++;
-                   removedChar.splice(i, 1);
+                   arr.splice(i, 1);
         }else{
           uniques.push(value)
-    
-           total=arr.length-duplicates;
+  
         }
    })
 
    return {
-     duplicate:total,
+     duplicate:duplicates,
      uniques: uniques.join('')
    }
 
